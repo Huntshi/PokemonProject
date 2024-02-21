@@ -8,7 +8,7 @@
 // - stamina_loss_scaler,
 // - type
 
-[
+let fast_moves = [
     {
         "duration": 400,
         "energy_delta": 6,
@@ -17,7 +17,7 @@
         "power": 3,
         "stamina_loss_scaler": 0.01,
         "type": "Bug"
-},
+    },
     {
         "duration": 500,
         "energy_delta": 6,
@@ -26,7 +26,7 @@
         "power": 5,
         "stamina_loss_scaler": 0.01,
         "type": "Bug"
-},
+    },
     {
         "duration": 500,
         "energy_delta": 4,
@@ -35,7 +35,7 @@
         "power": 6,
         "stamina_loss_scaler": 0.01,
         "type": "Dark"
-},
+    },
     {
         "duration": 700,
         "energy_delta": 8,
@@ -44,7 +44,7 @@
         "power": 7,
         "stamina_loss_scaler": 0.01,
         "type": "Dark"
-},
+    },
     {
         "duration": 500,
         "energy_delta": 4,
@@ -53,7 +53,7 @@
         "power": 6,
         "stamina_loss_scaler": 0.01,
         "type": "Dragon"
-},
+    },
     {
         "duration": 600,
         "energy_delta": 8,
@@ -62,7 +62,7 @@
         "power": 5,
         "stamina_loss_scaler": 0.01,
         "type": "Electric"
-},
+    },
     {
         "duration": 700,
         "energy_delta": 9,
@@ -71,7 +71,7 @@
         "power": 6,
         "stamina_loss_scaler": 0.01,
         "type": "Electric"
-},
+    },
     {
         "duration": 600,
         "energy_delta": 6,
@@ -80,7 +80,7 @@
         "power": 6,
         "stamina_loss_scaler": 0.01,
         "type": "Fighting"
-},
+    },
     {
         "duration": 800,
         "energy_delta": 10,
@@ -89,7 +89,7 @@
         "power": 8,
         "stamina_loss_scaler": 0.01,
         "type": "Fighting"
-},
+    },
     {
         "duration": 1000,
         "energy_delta": 10,
@@ -98,7 +98,7 @@
         "power": 10,
         "stamina_loss_scaler": 0.01,
         "type": "Fire"
-},
+    },
     {
         "duration": 800,
         "energy_delta": 9,
@@ -107,7 +107,7 @@
         "power": 8,
         "stamina_loss_scaler": 0.01,
         "type": "Flying"
-},
+    },
     {
         "duration": 1000,
         "energy_delta": 10,
@@ -116,7 +116,7 @@
         "power": 10,
         "stamina_loss_scaler": 0.01,
         "type": "Flying"
-},
+    },
     {
         "duration": 500,
         "energy_delta": 6,
@@ -125,7 +125,7 @@
         "power": 5,
         "stamina_loss_scaler": 0.01,
         "type": "Ghost"
-},
+    },
     {
         "duration": 700,
         "energy_delta": 6,
@@ -134,7 +134,7 @@
         "power": 9,
         "stamina_loss_scaler": 0.01,
         "type": "Ghost"
-},
+    },
     {
         "duration": 600,
         "energy_delta": 6,
@@ -143,7 +143,7 @@
         "power": 7,
         "stamina_loss_scaler": 0.01,
         "type": "Grass"
-},
+    },
     {
         "duration": 1000,
         "energy_delta": 7,
@@ -152,7 +152,7 @@
         "power": 13,
         "stamina_loss_scaler": 0.01,
         "type": "Grass"
-},
+    },
     {
         "duration": 600,
         "energy_delta": 7,
@@ -161,7 +161,7 @@
         "power": 5,
         "stamina_loss_scaler": 0.01,
         "type": "Ground"
-},
+    },
     {
         "duration": 1200,
         "energy_delta": 12,
@@ -170,7 +170,7 @@
         "power": 12,
         "stamina_loss_scaler": 0.01,
         "type": "Ice"
-},
+    },
     {
         "duration": 900,
         "energy_delta": 8,
@@ -179,7 +179,7 @@
         "power": 10,
         "stamina_loss_scaler": 0.01,
         "type": "Ice"
-},
+    },
     {
         "duration": 800,
         "energy_delta": 10,
@@ -188,7 +188,7 @@
         "power": 8,
         "stamina_loss_scaler": 0.01,
         "type": "Normal"
-},
+    },
     {
         "duration": 500,
         "energy_delta": 4,
@@ -197,7 +197,7 @@
         "power": 6,
         "stamina_loss_scaler": 0.01,
         "type": "Normal"
-},
+    },
     {
         "duration": 500,
         "energy_delta": 5,
@@ -206,7 +206,7 @@
         "power": 5,
         "stamina_loss_scaler": 0.01,
         "type": "Normal"
-},
+    },
     {
         "duration": 600,
         "energy_delta": 6,
@@ -215,7 +215,7 @@
         "power": 7,
         "stamina_loss_scaler": 0.01,
         "type": "Normal"
-},
+    },
     {
         "duration": 500,
         "energy_delta": 5,
@@ -224,7 +224,7 @@
         "power": 5,
         "stamina_loss_scaler": 0.01,
         "type": "Normal"
-},
+    },
     {
         "duration": 800,
         "energy_delta": 7,
@@ -233,7 +233,7 @@
         "power": 10,
         "stamina_loss_scaler": 0.01,
         "type": "Poison"
-},
+    },
     {
         "duration": 800,
         "energy_delta": 8,
@@ -242,7 +242,7 @@
         "power": 9,
         "stamina_loss_scaler": 0.01,
         "type": "Poison"
-},
+    },
     {
         "duration": 600,
         "energy_delta": 8,
@@ -251,7 +251,7 @@
         "power": 5,
         "stamina_loss_scaler": 0.01,
         "type": "Psychic"
-},
+    },
     {
         "duration": 900,
         "energy_delta": 7,
@@ -260,7 +260,7 @@
         "power": 12,
         "stamina_loss_scaler": 0.01,
         "type": "Rock"
-},
+    },
     {
         "duration": 700,
         "energy_delta": 7,
@@ -269,7 +269,7 @@
         "power": 8,
         "stamina_loss_scaler": 0.01,
         "type": "Steel"
-},
+    },
     {
         "duration": 900,
         "energy_delta": 10,
@@ -278,7 +278,7 @@
         "power": 9,
         "stamina_loss_scaler": 0.01,
         "type": "Steel"
-},
+    },
     {
         "duration": 500,
         "energy_delta": 5,
@@ -287,7 +287,7 @@
         "power": 5,
         "stamina_loss_scaler": 0.01,
         "type": "Water"
-},
+    },
     {
         "duration": 1730,
         "energy_delta": 20,
@@ -296,7 +296,7 @@
         "power": 0,
         "stamina_loss_scaler": 0.01,
         "type": "Water"
-},
+    },
     {
         "duration": 1400,
         "energy_delta": 12,
@@ -305,7 +305,7 @@
         "power": 18,
         "stamina_loss_scaler": 0.01,
         "type": "Ground"
-},
+    },
     {
         "duration": 1100,
         "energy_delta": 10,
@@ -314,7 +314,7 @@
         "power": 12,
         "stamina_loss_scaler": 0.01,
         "type": "Psychic"
-},
+    },
     {
         "duration": 1600,
         "energy_delta": 15,
@@ -323,7 +323,7 @@
         "power": 20,
         "stamina_loss_scaler": 0.01,
         "type": "Psychic"
-},
+    },
     {
         "duration": 600,
         "energy_delta": 7,
@@ -332,7 +332,7 @@
         "power": 5,
         "stamina_loss_scaler": 0.01,
         "type": "Poison"
-},
+    },
     {
         "duration": 1200,
         "energy_delta": 14,
@@ -341,7 +341,7 @@
         "power": 12,
         "stamina_loss_scaler": 0.01,
         "type": "Water"
-},
+    },
     {
         "duration": 900,
         "energy_delta": 9,
@@ -350,7 +350,7 @@
         "power": 10,
         "stamina_loss_scaler": 0.01,
         "type": "Dark"
-},
+    },
     {
         "duration": 800,
         "energy_delta": 6,
@@ -359,7 +359,7 @@
         "power": 11,
         "stamina_loss_scaler": 0.01,
         "type": "Steel"
-},
+    },
     {
         "duration": 900,
         "energy_delta": 8,
@@ -368,7 +368,7 @@
         "power": 12,
         "stamina_loss_scaler": 0.01,
         "type": "Fire"
-},
+    },
     {
         "duration": 1300,
         "energy_delta": 10,
@@ -377,7 +377,7 @@
         "power": 15,
         "stamina_loss_scaler": 0.01,
         "type": "Fighting"
-},
+    },
     {
         "duration": 2230,
         "energy_delta": 0,
@@ -386,7 +386,7 @@
         "power": 0,
         "stamina_loss_scaler": 0.01,
         "type": "Normal"
-},
+    },
     {
         "duration": 900,
         "energy_delta": 8,
@@ -395,7 +395,7 @@
         "power": 12,
         "stamina_loss_scaler": 0.01,
         "type": "Fighting"
-},
+    },
     {
         "duration": 1000,
         "energy_delta": 15,
@@ -404,7 +404,7 @@
         "power": 6,
         "stamina_loss_scaler": 0.01,
         "type": "Ice"
-},
+    },
     {
         "duration": 1100,
         "energy_delta": 15,
@@ -413,7 +413,7 @@
         "power": 8,
         "stamina_loss_scaler": 0.01,
         "type": "Electric"
-},
+    },
     {
         "duration": 1600,
         "energy_delta": 21,
@@ -422,7 +422,7 @@
         "power": 14,
         "stamina_loss_scaler": 0.01,
         "type": "Electric"
-},
+    },
     {
         "duration": 1100,
         "energy_delta": 9,
@@ -431,7 +431,7 @@
         "power": 15,
         "stamina_loss_scaler": 0.01,
         "type": "Dragon"
-},
+    },
     {
         "duration": 1200,
         "energy_delta": 10,
@@ -440,7 +440,7 @@
         "power": 14,
         "stamina_loss_scaler": 0.01,
         "type": "Flying"
-},
+    },
     {
         "duration": 1100,
         "energy_delta": 14,
@@ -449,7 +449,7 @@
         "power": 10,
         "stamina_loss_scaler": 0.01,
         "type": "Bug"
-},
+    },
     {
         "duration": 1500,
         "energy_delta": 15,
@@ -458,7 +458,7 @@
         "power": 15,
         "stamina_loss_scaler": 0.01,
         "type": "Bug"
-},
+    },
     {
         "duration": 1100,
         "energy_delta": 14,
@@ -467,7 +467,7 @@
         "power": 8,
         "stamina_loss_scaler": 0.01,
         "type": "Ghost"
-},
+    },
     {
         "duration": 1200,
         "energy_delta": 16,
@@ -476,7 +476,7 @@
         "power": 10,
         "stamina_loss_scaler": 0.01,
         "type": "Ghost"
-},
+    },
     {
         "duration": 1100,
         "energy_delta": 7,
@@ -485,7 +485,7 @@
         "power": 15,
         "stamina_loss_scaler": 0.01,
         "type": "Steel"
-},
+    },
     {
         "duration": 1100,
         "energy_delta": 10,
@@ -494,7 +494,7 @@
         "power": 14,
         "stamina_loss_scaler": 0.01,
         "type": "Fire"
-},
+    },
     {
         "duration": 1100,
         "energy_delta": 14,
@@ -503,7 +503,7 @@
         "power": 8,
         "stamina_loss_scaler": 0.01,
         "type": "Grass"
-},
+    },
     {
         "duration": 1100,
         "energy_delta": 12,
@@ -512,7 +512,7 @@
         "power": 12,
         "stamina_loss_scaler": 0.01,
         "type": "Psychic"
-},
+    },
     {
         "duration": 1100,
         "energy_delta": 14,
@@ -521,7 +521,7 @@
         "power": 12,
         "stamina_loss_scaler": 0.01,
         "type": "Dark"
-},
+    },
     {
         "duration": 1500,
         "energy_delta": 15,
@@ -530,7 +530,7 @@
         "power": 15,
         "stamina_loss_scaler": 0.01,
         "type": "Normal"
-},
+    },
     {
         "duration": 1200,
         "energy_delta": 10,
@@ -539,7 +539,7 @@
         "power": 8,
         "stamina_loss_scaler": 0.01,
         "type": "Normal"
-},
+    },
     {
         "duration": 1200,
         "energy_delta": 8,
@@ -548,7 +548,7 @@
         "power": 16,
         "stamina_loss_scaler": 0.01,
         "type": "Water"
-},
+    },
     {
         "duration": 1700,
         "energy_delta": 15,
@@ -557,7 +557,7 @@
         "power": 0,
         "stamina_loss_scaler": 0.01,
         "type": "Normal"
-},
+    },
     {
         "duration": 1300,
         "energy_delta": 20,
@@ -566,7 +566,7 @@
         "power": 5,
         "stamina_loss_scaler": 0.01,
         "type": "Normal"
-},
+    },
     {
         "duration": 1200,
         "energy_delta": 8,
@@ -575,7 +575,7 @@
         "power": 16,
         "stamina_loss_scaler": 0.01,
         "type": "Rock"
-},
+    },
     {
         "duration": 1500,
         "energy_delta": 11,
@@ -584,7 +584,7 @@
         "power": 20,
         "stamina_loss_scaler": 0.01,
         "type": "Fairy"
-},
+    },
     {
         "duration": 300,
         "energy_delta": 6,
@@ -593,7 +593,7 @@
         "power": 1,
         "stamina_loss_scaler": 0.01,
         "type": "Normal"
-},
+    },
     {
         "duration": 1200,
         "energy_delta": 16,
@@ -602,7 +602,7 @@
         "power": 12,
         "stamina_loss_scaler": 0.01,
         "type": "Electric"
-},
+    },
     {
         "duration": 1500,
         "energy_delta": 20,
@@ -611,7 +611,7 @@
         "power": 12,
         "stamina_loss_scaler": 0.01,
         "type": "Ice"
-},
+    },
     {
         "duration": 2000,
         "energy_delta": 20,
@@ -620,7 +620,7 @@
         "power": 25,
         "stamina_loss_scaler": 0.01,
         "type": "Flying"
-},
+    },
     {
         "duration": 2300,
         "energy_delta": 20,
@@ -629,7 +629,7 @@
         "power": 29,
         "stamina_loss_scaler": 0.01,
         "type": "Fire"
-},
+    },
     {
         "duration": 1400,
         "energy_delta": 16,
@@ -638,5 +638,5 @@
         "power": 16,
         "stamina_loss_scaler": 0.01,
         "type": "Grass"
-}
+    }
 ]
