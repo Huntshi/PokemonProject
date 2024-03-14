@@ -68,6 +68,7 @@ class Pokemon {
 
         this.all_pokemons = lstPokemon;
     }
+
 }
 
 console.log(Pokemon.importPokemon());

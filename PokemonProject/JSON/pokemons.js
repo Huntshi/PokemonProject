@@ -6,6 +6,8 @@
 // - pokemon_ID,
 // - pokemon name.
 
+// attack struglle bug
+
 let pokemons = [
   {
     base_attack: 118,
