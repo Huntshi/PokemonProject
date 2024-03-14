@@ -1,5 +1,4 @@
 // Création de la class Type
-
 class Type {
     all_types = ["Grass", "Poison", "Fire", "Flying", "Water", "Bug", "Normal", "Drak", "Electric", "Psychic", "Ice", "Steel", "Ground", "Fairy", "Fighting", "Rock", "Ghost", "Dragon"];
 
@@ -16,15 +15,9 @@ class Type {
         return this.type_effectiveness;
     }
 
-    effectiveness() {
-        let tabEffectiveness = import('./type_effectiveness.js');
-        console.log(tabEffectiveness);
-    }
-
     toString() {
         return "Type : " + this.type_name + " Type d'efficacité : " + this.type_effectiveness;
     }
 }
 
 let t1 = new Type("Poison", "Grass");
-console.log(t1.effectiveness());
