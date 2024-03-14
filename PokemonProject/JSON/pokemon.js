@@ -45,6 +45,7 @@ class Pokemon {
     toString() {
         return "Nom : " + this.pokemon_name + " ID : " + this.pokemon_id + " Forme : " + this.form + " Attaque : " + this.base_attack + " Défense : " + this.base_defense + " Endurance : " + this.base_stamina + " Type : " + this.type;
     }
+
 }
 
 let p1 = new Pokemon(118, 111, 128, "Normal", 1, "Bulbizarre", "Plante");
