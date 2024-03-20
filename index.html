@@ -9,8 +9,12 @@
 
     <script src="PokemonProject/JSON/pokemons.js"></script>
     <script src="PokemonProject/JSON/pokemon_type.js"></script>
+    <script src="PokemonProject/JSON/attack.js"></script>
     <script src="PokemonProject/JSON/type.js"> </script>
     <script src="PokemonProject/JSON/type_effectiveness.js"> </script>
+    <script src="PokemonProject/JSON/pokemon_moves.js"></script>
+    <script src="PokemonProject/JSON/fast_moves.js"></script>
+    <script src="PokemonProject/JSON/charged_moves.js"></script>
     <script src="PokemonProject/JSON/pokemon.js"></script>
 
     <link rel="stylesheet" href="html/css/style.css">
@@ -58,6 +62,11 @@
             </tbody>
         </table>
     </main>
+
+    <script>
+        Pokemon.importPokemon(); 
+        console.log(Pokemon.all_pokemons[0].toString());
+        </script>
 
 </body>
 
