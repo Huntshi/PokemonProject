@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tests Pokemon</title>
+
+    <script src="PokemonProject/JSON/pokemons.js"></script>
+    <script src="PokemonProject/JSON/pokemon_type.js"></script>
+    <script src="PokemonProject/JSON/type_effectiveness.js"> </script>
+    <script src="PokemonProject/JSON/pokemon_moves.js"></script>
+    <script src="PokemonProject/JSON/fast_moves.js"></script>
+    <script src="PokemonProject/JSON/charged_moves.js"></script>
+
+    <script src="PokemonProject/JSON/type.js"> </script>
+    <script src="PokemonProject/JSON/attack.js"></script>
+    <script src="PokemonProject/JSON/pokemon.js"></script>
+
+    <script src="./test.js"></script>
+
+    <link rel="stylesheet" href="stylesheet.css">
+</head>
+<body>
+    <h1>Tests Pokemon</h1>
+
+    <!-- Champ commun pour la saisie de l'argument -->
+    <label for="argument">Argument :</label>
+    <input type="text" id="argument">
+
+    <!-- Liens pour exécuter les tests -->
+    <ul>
+        <li><a href="#" onclick="testGetPokemonsByType()">Test getPokemonsByType()</a></li>
+        <li><a href="#" onclick="testGetPokemonsByAttack()">Test getPokemonsByAttack()</a></li>
+        <li><a href="#" onclick="testGetAttacksByType()">Test getAttacksByType()</a></li>
+        <li><a href="#" onclick="testSortPokemonByName()">Test sortPokemonByName()</a></li>
+        <li><a href="#" onclick="testSortPokemonByStamina()">Test sortPokemonByStamina()</a></li>
+        <li><a href="#" onclick="testGetWeakestEnemies()">Test getWeakestEnemies()</a></li>
+        <li><a href="#" onclick="testGetBestAttackTypesForEnemy()">Test getBestAttackTypesForEnemy()</a></li>
+    </ul>
+
+    <script src="test.js"></script>
+</body>
+</html>

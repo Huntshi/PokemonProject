@@ -9,6 +9,7 @@ class Attack {
         this.stamina_loss_scaler = stamina_loss_scaler;
         this.critical_chance = critical_chance;
         this.fast = fast;
+        this.all_attack = [];
     }
 
     get getType() {
@@ -76,7 +77,7 @@ class Attack {
     }
 
     toString() {
-        return "Type : " + this.type +
+        return "\n\nType : " + this.type +
             "\nNom : " + this.name +
             "\nDurée : " + this.duration +
             "\nÉnergie delta : " + this.energy_delta +
@@ -84,5 +85,21 @@ class Attack {
             "\nÉchelle de perte d'endurance : " + this.stamina_loss_scaler +
             "\nChance critique : " + this.critical_chance +
             "\nRapide : " + this.fast;
+    }
+
+    static importAttack() {
+        let attaques = [];
+
+        for (let i=0; i<charged_moves.length; i++) {
+            let attack = new Attack(charged_moves[i].type, charged_moves[i].name, charged_moves[i].duration, charged_moves[i].energy_delta, charged_moves[i].power, charged_moves[i].stamina_loss_scaler, charged_moves[i].critical_chance, false);
+            attaques.push(attack);
+        }
+
+        for (let i=0; i<fast_moves.length; i++) {
+            let attack = new Attack(fast_moves[i].type, fast_moves[i].name, fast_moves[i].duration, fast_moves[i].energy_delta, fast_moves[i].power, fast_moves[i].stamina_loss_scaler, 0, true);
+            attaques.push(attack);
+        }
+
+        this.all_attack = attaques;
     }
 }
