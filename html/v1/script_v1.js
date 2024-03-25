@@ -4,7 +4,9 @@
 
 const tableBody = document.getElementById('tableBodyPokemon');
 
-for (let i = 0; i < Pokemon.length; i++) {
+for (let pokemon of Pokemon.all_pokemons) {
+
+    console.log(pokemon);
 
     const ligne = document.createElement('tr');
     const idCase = document.createElement('td');
@@ -16,22 +18,17 @@ for (let i = 0; i < Pokemon.length; i++) {
     const defenseCase = document.createElement('td');
     const imageCase = document.createElement('td');
 
-    idCase.textContent = Pokemon.id;
-    nameCase.textContent = Pokemon.pokemon_name;
+    idCase.textContent = pokemon.id;
+    nameCase.textContent = pokemon.pokemon_name;
     generationCase.textContent = "Normal";
-    typesCase.textContent = Pokemon.type;
-    enduranceCase.textContent = Pokemon.base_stamina;
-    attaqueCase.textContent = Pokemon.base_attack;
-    defenseCase.textContent = Pokemon.base_defense;
+    typesCase.textContent = pokemon.type;
+    enduranceCase.textContent = pokemon.base_stamina;
+    attaqueCase.textContent = pokemon.base_attack;
+    defenseCase.textContent = pokemon.base_defense;
 
     const image = document.createElement('img');
     //let nomImage = '../webp/images/' + Pokemon.all_pokemons[0].id + '.webp';
-
-    let idNomImage = Pokemon.all_pokemons[0].id;
-    idNomImage.toString();
-    idNomImage = "00" + idNomImage;
-    console.log(transformInt(100));
-
+   
     //image.src = '../webp/images/' + Pokemon.id + '.webp';
 
     imageCase.appendChild(image);

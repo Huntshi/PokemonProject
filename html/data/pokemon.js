@@ -258,9 +258,4 @@ class Pokemon {
     
 }
 
-<<<<<<< HEAD:html/data/pokemon.js
 Pokemon.importPokemon();
-//console.log(Pokemon.all_pokemons[0].toString());
-=======
-Pokemon.importPokemon();
->>>>>>> 8651e757ac83bc000a7014ef9f52d498c141efbf:PokemonProject/JSON/pokemon.js
