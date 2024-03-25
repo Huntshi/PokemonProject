@@ -112,5 +112,5 @@ class Pokemon {
     }
 }
 
-/*console.log(Pokemon.importPokemon());
-console.log(Pokemon.all_pokemons[0].toString());*/
+Pokemon.importPokemon();
+//console.log(Pokemon.all_pokemons[0].toString());
