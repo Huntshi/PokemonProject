@@ -17,6 +17,7 @@ function transformInt(id) {
 const tableBody = document.getElementById('tableBodyPokemon');
 
 for (let pokemon of Pokemon.all_pokemons) {
+
     const ligne = document.createElement('tr');
     const idCase = document.createElement('td');
     const nameCase = document.createElement('td');
@@ -36,7 +37,6 @@ for (let pokemon of Pokemon.all_pokemons) {
     defenseCase.textContent = pokemon.base_defense;
 
     const image = document.createElement('img');
-
     let imageId = transformInt(pokemon.id);
     image.src = "../webp/images/" + imageId + ".webp";
     image.height = "150";
