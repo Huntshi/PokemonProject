@@ -3,6 +3,7 @@ class Type {
     constructor(type_name, type_effectiveness_name) {
         this.type_name = type_name;
         this.type_effectiveness_name = type_effectiveness_name;
+        this.all_types = [];
     }
 
     get getType_name() {
@@ -33,4 +34,15 @@ class Type {
             "\nEfficacité du type : " + effectivenessString;
     }
     
+    static importType() {
+        let lstType = [];
+
+        // Boucle pour parcourir le dictionnaire type_effectiveness
+        for (let type1 in type_effectiveness) {
+            let type = new Type(type1, type_effectiveness[type1]);
+            lstType.push(type);
+        }
+
+        this.all_types = lstType;
+    }
 }
