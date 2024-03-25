@@ -17,17 +17,58 @@
     <script src="PokemonProject/JSON/attack.js"></script>
     <script src="PokemonProject/JSON/pokemon.js"></script>
 
-    <link rel="stylesheet" href="style.css"></link>
+    <link rel="stylesheet" href="html/css/style.css">
+    </link>
 </head>
 
 <body>
-    <script>
-    Pokemon.importPokemon();
-    console.log(Pokemon.all_pokemons[0].getAttacks);
-    console.log(Attack.all_attack);
-    </script>
+    <header>
+        <figure>
+            <img src="Images/1664263789-dive-ball-by-ace-zeroartic-df45vwy-fullview.png" alt="Pokemon Logo" width="100"
+                height="100">
+        </figure>
+        <h1>Pokemon Battle</h1>
+    </header>
 
-    <h1>Salut toi !!!</h1>
+    <main>
+        <table>
+            <caption>
+                Liste de Pokemon
+            </caption>
+            <thead>
+                <tr>
+                    <th scope="col">id</th>
+                    <th scope="col">nom</th>
+                    <th scope="col">generation</th>
+                    <th scope="col">types</th>
+                    <th scope="col">endurance</th>
+                    <th scope="col">attaque</th>
+                    <th scope="col">defense</th>
+                    <th scope="col">image</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td scope="row">1</td>
+                    <td scope="row">Bulbasaur</td>
+                    <td scope="row">1</td>
+                    <td scope="row">Grass Poison</td>
+                    <td scope="row">128</td>
+                    <td scope="row">118</td>
+                    <td scope="row">111</td>
+                    <td scope="row"><img src="html/webp/images/001.webp" alt="Bulbasaur" width="100" height="100"></td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+
+    <script>
+        Pokemon.importPokemon();
+        console.log(Pokemon.all_pokemons[0].getAttacks);
+    console.log(Attack.all_attack);
+        </script>
+
 </body>
 
 </html>
