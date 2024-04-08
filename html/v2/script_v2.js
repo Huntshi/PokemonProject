@@ -1,7 +1,3 @@
-
-// On récupère la class Pokemon
-//Pokemon.importPokemon();
-
 function transformInt(id) {
     let stringId = id.toString();
 
