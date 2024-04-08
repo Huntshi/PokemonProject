@@ -10,6 +10,7 @@ function transformInt(id) {
     return stringId;
 }
 
+
 const tableBody = document.getElementById('tableBodyPokemon');
 
 for (let pokemon of Pokemon.all_pokemons) {
@@ -25,7 +26,8 @@ for (let pokemon of Pokemon.all_pokemons) {
 
     idCase.textContent = pokemon.id;
     nameCase.textContent = pokemon.pokemon_name;
-    generationCase.textContent = "Normal";
+    generationCase.textContent = pokemon.generation;
+    
     typesCase.textContent = pokemon.type;
     enduranceCase.textContent = pokemon.base_stamina;
     attaqueCase.textContent = pokemon.base_attack;
@@ -42,8 +44,8 @@ for (let pokemon of Pokemon.all_pokemons) {
     imageCase.appendChild(image);
 
     ligne.appendChild(idCase);
-    ligne.appendChild(generationCase);
     ligne.appendChild(nameCase);
+    ligne.appendChild(generationCase);
     ligne.appendChild(typesCase);
     ligne.appendChild(enduranceCase);
     ligne.appendChild(attaqueCase);
