@@ -1,8 +1,9 @@
 // Création de la class Pokemon
 class Pokemon {
-    constructor(id, pokemon_name, base_attack, base_defense, base_stamina, type, attack) {
+    constructor(id, pokemon_name, generation, base_attack, base_defense, base_stamina, type, attack) {
         this.id = id;
         this.pokemon_name = pokemon_name;
+        this.generation = generation;
         this.base_attack = base_attack;
         this.base_defense = base_defense;
         this.base_stamina = base_stamina;
@@ -80,6 +81,16 @@ class Pokemon {
 
         for (let i=0; i<pokemons.length; i++) {
             if (pokemons[i].form == "Normal") {
+                // Partie pour récuéprer la génération du pokémon
+                let gene = 0;
+                for (let elt in generation) {
+                    for (let j=0; j<generation[elt].length; j++) {
+                        if (generation[elt][j].name == pokemons[i].pokemon_name) {
+                            gene = generation[elt][j].generation_number;
+                        }
+                    }
+                }
+
                 // Partie pour récupérer les types du pokemon
                 let types = [];
                 for (let j=0; j<pokemon_types.length; j++) {
@@ -130,7 +141,7 @@ class Pokemon {
                     }
                 }
 
-                let poke = new Pokemon(pokemons[i].pokemon_id, pokemons[i].pokemon_name, pokemons[i].base_attack, pokemons[i].base_defense, pokemons[i].base_stamina, types, attaques);
+                let poke = new Pokemon(pokemons[i].pokemon_id, pokemons[i].pokemon_name, gene, pokemons[i].base_attack, pokemons[i].base_defense, pokemons[i].base_stamina, types, attaques);
                 lstPokemon.push(poke);
             }
         }
@@ -259,4 +270,3 @@ class Pokemon {
 }
 
 Pokemon.importPokemon();
-//console.log(Pokemon.all_pokemons[0].toString());
