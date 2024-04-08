@@ -25,7 +25,7 @@ function chargerPokemon(N) {
 
         idCase.textContent = pokemon.id;
         nameCase.textContent = pokemon.pokemon_name;
-        generationCase.textContent = "Normal";
+        generationCase.textContent = pokemon.generation;
         typesCase.textContent = pokemon.type;
         enduranceCase.textContent = pokemon.base_stamina;
         attaqueCase.textContent = pokemon.base_attack;
