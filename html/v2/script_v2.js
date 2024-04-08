@@ -1,6 +1,8 @@
 // Définition de la taille des pages
 const pageSize = 25;
-let currentPage = 1;
+
+// Récupérer la page actuelle depuis le stockage local
+let currentPage = localStorage.getItem('currentPage') || 1;
 
 function transformInt(id) {
     let stringId = id.toString();
@@ -35,7 +37,7 @@ function renderPokemonPage(pageNumber) {
 
         idCase.textContent = pokemon.id;
         nameCase.textContent = pokemon.pokemon_name;
-        generationCase.textContent = pokemon.generation;
+        generationCase.textContent = "Normal";
         typesCase.textContent = pokemon.type;
         enduranceCase.textContent = pokemon.base_stamina;
         attaqueCase.textContent = pokemon.base_attack;
@@ -51,8 +53,8 @@ function renderPokemonPage(pageNumber) {
         imageCase.appendChild(image);
 
         ligne.appendChild(idCase);
-        ligne.appendChild(nameCase);
         ligne.appendChild(generationCase);
+        ligne.appendChild(nameCase);
         ligne.appendChild(typesCase);
         ligne.appendChild(enduranceCase);
         ligne.appendChild(attaqueCase);
@@ -73,6 +75,9 @@ function renderPokemonPage(pageNumber) {
     // Désactiver le bouton "Précédent" si nous sommes sur la première page
     const previousButton = document.getElementById('previousButton');
     previousButton.disabled = pageNumber === 1;
+
+    // Enregistrer la page actuelle dans le stockage local
+    localStorage.setItem('currentPage', pageNumber);
 }
 
 function nextPage() {
