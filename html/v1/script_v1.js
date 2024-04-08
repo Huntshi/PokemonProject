@@ -14,19 +14,6 @@ function transformInt(id) {
     return stringId;
 }
 
-import { generation } from "../data/generation.js";
-
-function findGeneration(id) {
-    for (let gen in generation) {
-        for (let pokemon in generation[gen]) {
-            if (pokemon.id === id) {
-                return gen;
-            }
-        }
-    }
-
-    return "Cet ID ne correspond à aucun Pokémon !";
-}
 
 const tableBody = document.getElementById('tableBodyPokemon');
 
@@ -44,7 +31,8 @@ for (let pokemon of Pokemon.all_pokemons) {
 
     idCase.textContent = pokemon.id;
     nameCase.textContent = pokemon.pokemon_name;
-    generationCase.textContent = findGeneration(pokemon.id);
+    generationCase.textContent = pokemon.generation;
+    
     typesCase.textContent = pokemon.type;
     enduranceCase.textContent = pokemon.base_stamina;
     attaqueCase.textContent = pokemon.base_attack;
