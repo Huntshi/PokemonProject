@@ -10,7 +10,6 @@ function transformInt(id) {
     return stringId;
 }
 
-
 const tableBody = document.getElementById('tableBodyPokemon');
 
 for (let pokemon of Pokemon.all_pokemons) {
