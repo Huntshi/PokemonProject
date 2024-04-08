@@ -1,18 +1,28 @@
-var compteur = 25;
+// Définition de la taille des pages
+const pageSize = 25;
+let currentPage = 1;
 
-function chargerPokemon(N) {
+function transformInt(id) {
+    let stringId = id.toString();
 
+    if (stringId.length == 1) {
+        stringId = "00" + stringId;
+    } else if (stringId.length == 2) {
+        stringId = "0" + stringId;
+    }
+
+    return stringId;
+}
+
+function renderPokemonPage(pageNumber) {
     const tableBody = document.getElementById('tableBodyPokemon');
-    /*const tableRows = tableBody.getElementsByTagName('tr');
+    tableBody.innerHTML = '';
 
-    while (tableRows.length > 0) {
-        tableRows[0].parentNode.removeChild(tableRows[0]);
-    }*/
+    const start = (pageNumber - 1) * pageSize;
+    const end = start + pageSize;
 
-    for (let i = N - 25; i < N; i++) {
-
-        let pokemon = Pokemon.all_pokemons[i];
-
+    for (let i = start; i < end && i < Pokemon.all_pokemons.length; i++) {
+        const pokemon = Pokemon.all_pokemons[i];
         const ligne = document.createElement('tr');
         const idCase = document.createElement('td');
         const nameCase = document.createElement('td');
@@ -41,8 +51,8 @@ function chargerPokemon(N) {
         imageCase.appendChild(image);
 
         ligne.appendChild(idCase);
-        ligne.appendChild(nameCase);
         ligne.appendChild(generationCase);
+        ligne.appendChild(nameCase);
         ligne.appendChild(typesCase);
         ligne.appendChild(enduranceCase);
         ligne.appendChild(attaqueCase);
@@ -52,62 +62,31 @@ function chargerPokemon(N) {
         tableBody.appendChild(ligne);
     }
 
-}
-
-function transformInt(id) {
-    let stringId = id.toString();
-
-    if (stringId.length == 1) {
-        stringId = "00" + stringId;
-    } else if (stringId.length == 2) {
-        stringId = "0" + stringId;
-    }
-
-    return stringId;
-}
-
-function supprimerLignes(N) {
-    const tableBody = document.getElementById('tableBodyPokemon');
-
-    if (!tableBody || N <= 0) {
-        return;
-    }
-
-
-
-    for (let j = 0; j < N; j++) {
-        tableBody.deleteRow(0);
-    }
-}
-
-function PokemonsSuivant() {
-    if (Pokemon.all_pokemons.length < compteur + 25) {
-        compteur = Pokemon.all_pokemons.length;
-        supprimerLignes(25);
-        chargerPokemon(compteur);
+    // Désactiver le bouton "Suivant" si nous sommes sur la dernière page
+    const nextButton = document.getElementById('nextButton');
+    if (end >= Pokemon.all_pokemons.length) {
+        nextButton.disabled = true;
     } else {
-        compteur += 25;
-        supprimerLignes(25);
-        chargerPokemon(compteur);
+        nextButton.disabled = false;
     }
 
-
+    // Désactiver le bouton "Précédent" si nous sommes sur la première page
+    const previousButton = document.getElementById('previousButton');
+    previousButton.disabled = pageNumber === 1;
 }
 
-function PokemonPrecedent() {
-    console.log(compteur);
-    if (compteur - 25 > 0) {
-        compteur -= 25;
-        supprimerLignes(25);
-        chargerPokemon(compteur);
-    } else if (compteur - 50 < 25) {
-        console.log(compteur);
+function nextPage() {
+    currentPage++;
+    renderPokemonPage(currentPage);
+}
 
-        compteur = 25;
-        supprimerLignes(25);
-        chargerPokemon(compteur);
+function previousPage() {
+    currentPage--;
+    if (currentPage < 1) {
+        currentPage = 1;
     }
-
+    renderPokemonPage(currentPage);
 }
 
-chargerPokemon(compteur);
+// Afficher la première page initialement
+renderPokemonPage(currentPage);
