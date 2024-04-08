@@ -51,8 +51,8 @@ function renderPokemonPage(pageNumber) {
         imageCase.appendChild(image);
 
         ligne.appendChild(idCase);
-        ligne.appendChild(generationCase);
         ligne.appendChild(nameCase);
+        ligne.appendChild(generationCase);
         ligne.appendChild(typesCase);
         ligne.appendChild(enduranceCase);
         ligne.appendChild(attaqueCase);
