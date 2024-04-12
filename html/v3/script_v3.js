@@ -1,7 +1,7 @@
 // Définition de la taille des pages
 const pageSize = 25;
 
-// Récupérer la page actuelle depuis le stockage local
+// Récupération de la page actuelle
 let currentPage = localStorage.getItem('currentPage') || 1;
 
 function transformInt(id) {
@@ -35,7 +35,7 @@ function renderPokemonPage(pageNumber) {
         const defenseCase = document.createElement('td');
         const imageCase = document.createElement('td');
 
-        // Ajoutez un gestionnaire d'événements pour chaque ligne
+        // Ajout d'un gestionnaire d'événements pour chaque ligne
         ligne.addEventListener('click', function() {
             displayPokemonContextMenu(event, pokemon);
         });
@@ -69,7 +69,7 @@ function renderPokemonPage(pageNumber) {
         tableBody.appendChild(ligne);
     }
 
-    // Désactiver le bouton "Suivant" si nous sommes sur la dernière page
+    // Désactivation du bouton "Suivant" si nous sommes sur la dernière page
     const nextButton = document.getElementById('nextButton');
     if (end >= Pokemon.all_pokemons.length) {
         nextButton.disabled = true;
@@ -77,41 +77,46 @@ function renderPokemonPage(pageNumber) {
         nextButton.disabled = false;
     }
 
-    // Désactiver le bouton "Précédent" si nous sommes sur la première page
+    // Désactivation du bouton "Précédent" si nous sommes sur la première page
     const previousButton = document.getElementById('previousButton');
     previousButton.disabled = pageNumber === 1;
 
-    // Enregistrer la page actuelle dans le stockage local
+    // Enregistrer la page actuelle
     localStorage.setItem('currentPage', pageNumber);
 }
 
-// Fonction pour afficher le menu contextuel avec les informations du Pokémon
+// Fonction qui affiche le menu contextuel avec les informations d'un Pokémon
 function displayPokemonContextMenu(event, pokemon) {
-    event.preventDefault(); // Empêcher le comportement par défaut du clic
-    const contextMenu = document.getElementById('pokemonContextMenu');
-    const contextMenuText = document.getElementById('contextMenuText');
+    event.preventDefault();
+    const popup = document.getElementById('pokemonPopup');
+    const popupId = document.getElementById('popupId');
+    const popupNom = document.getElementById('popupNom');
+    const popupGeneration = document.getElementById('popupGeneration');
+    const popupType = document.getElementById('popupType');
+    const popupEndurance = document.getElementById('popupEndurance');
+    const popupAttaque = document.getElementById('popupAttaque');
+    const popupDefense = document.getElementById('popupDefense');
+    const popupImage = document.getElementById('popupImage');
 
-    // Réinitialiser le contenu du menu contextuel
-    contextMenuText.innerHTML = '';
+    popupId.textContent = "ID: " + pokemon.id;
+    popupNom.textContent = "Nom: " + pokemon.pokemon_name;
+    popupGeneration.textContent = "Génération: " + pokemon.generation;
+    popupType.textContent = "Type: " + pokemon.type;
+    popupEndurance.textContent = "Endurance: " + pokemon.base_stamina;
+    popupAttaque.textContent = "Attaque: " + pokemon.base_attack;
+    popupDefense.textContent = "Défense: " + pokemon.base_defense;
+    popupImage.src = "../webp/images/" + transformInt(pokemon.id) + ".webp";
 
-    // Parcourir les propriétés de l'objet pokemon et les ajouter au menu contextuel
-    for (const prop in pokemon) {
-        if (Object.hasOwnProperty.call(pokemon, prop)) {
-            const propValue = pokemon[prop];
-            const menuItem = document.createElement('p');
-            menuItem.textContent = `${prop}: ${propValue}`;
-            contextMenuText.appendChild(menuItem);
-        }
+    if (!popup || !popupId || !popupNom || !popupGeneration || !popupType || !popupEndurance || !popupAttaque || !popupDefense || !popupImage) {
+        console.error("Erreur: Un ou plusieurs éléments de la popup ne sont pas définis.");
+        return;
     }
 
-    // Positionner le menu contextuel par rapport à la position du clic
-    contextMenu.style.left = `${event.pageX}px`;
-    contextMenu.style.top = `${event.pageY}px`;
-    contextMenu.style.display = 'block';
+    popup.style.display = 'block';
 }
 
 
-// Fonction pour fermer le menu contextuel
+// Fonction qui ferme le menu contextuel
 function closePokemonContextMenu() {
     const contextMenu = document.getElementById('pokemonContextMenu');
     contextMenu.style.display = 'none';
@@ -137,5 +142,5 @@ function previousPage() {
     renderPokemonPage(currentPage);
 }
 
-// Afficher la première page initialement
+// Affiche la première page initialement
 renderPokemonPage(currentPage);
