@@ -137,6 +137,28 @@ nextButton.addEventListener('click', closePokemonContextMenu);
 const previousButton = document.getElementById('previousButton');
 previousButton.addEventListener('click', closePokemonContextMenu);
 
+// Fonction pour filtrer les Pokémon en fonction de la génération sélectionnée
+function filterPokemonByGeneration() {
+    const generationSelect = document.getElementById('generationSelect');
+    const selectedGeneration = generationSelect.value;
+    const tableRows = document.querySelectorAll('#tableBodyPokemon tr');
+
+    tableRows.forEach(row => {
+        const generationCell = row.querySelector('td:nth-child(2)');
+        const generation = generationCell.textContent.trim();
+        console.log(selectedGeneration);
+        if (selectedGeneration === 'all' || generation == selectedGeneration) {
+            row.style.display = ''; // Afficher la ligne si elle correspond à la génération sélectionnée ou si toutes les générations sont sélectionnées
+        } else {
+            row.style.display = 'none'; // Masquer la ligne si elle ne correspond pas à la génération sélectionnée
+        }
+    });
+}
+
+// Ajout d'un gestionnaire d'événements pour le changement de sélection dans le filtre de génération
+const generationSelect = document.getElementById('generationSelect');
+generationSelect.addEventListener('change', filterPokemonByGeneration);
+
 function nextPage() {
     currentPage++;
     renderPokemonPage(currentPage);
