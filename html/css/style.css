@@ -1,6 +1,7 @@
 :root {
     --black_color: #373737;
     --sky_blue_color: #57A8D6;
+    --sky_sky_blue_color: #D3F0FC;
     --marine_blue_color: #05396A;
     --white_color: #ffffff;
 }
@@ -69,7 +70,7 @@ caption {
 }
 
 thead {
-    background-color: var(--sky_blue_color);
+    background-color: var(--sky_sky_blue_color);
 }
 
 th,
@@ -84,7 +85,7 @@ td {
 }
 
 tr:nth-child(even) td {
-    background-color: var(--sky_blue_color);
+    background-color: var(--sky_sky_blue_color);
 }
 
 tbody>tr:nth-of-type(even) {
