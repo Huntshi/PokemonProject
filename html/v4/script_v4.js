@@ -1,7 +1,7 @@
 // Définition de la taille des pages
 const pageSize = 25;
 
-// Récupération de la page actuelle
+// Récupérer la page actuelle depuis le stockage local
 let currentPage = localStorage.getItem('currentPage') || 1;
 
 function transformInt(id) {
@@ -35,14 +35,14 @@ function renderPokemonPage(pageNumber) {
         const defenseCase = document.createElement('td');
         const imageCase = document.createElement('td');
 
-        // Ajout d'un gestionnaire d'événements pour chaque ligne
+        // Ajoutez un gestionnaire d'événements pour chaque ligne
         ligne.addEventListener('click', function() {
             displayPokemonContextMenu(event, pokemon);
         });
 
         idCase.textContent = pokemon.id;
         nameCase.textContent = pokemon.pokemon_name;
-        generationCase.textContent = pokemon.generation;
+        generationCase.textContent = "Normal";
         typesCase.textContent = pokemon.type;
         enduranceCase.textContent = pokemon.base_stamina;
         attaqueCase.textContent = pokemon.base_attack;
@@ -58,8 +58,8 @@ function renderPokemonPage(pageNumber) {
         imageCase.appendChild(image);
 
         ligne.appendChild(idCase);
-        ligne.appendChild(nameCase);
         ligne.appendChild(generationCase);
+        ligne.appendChild(nameCase);
         ligne.appendChild(typesCase);
         ligne.appendChild(enduranceCase);
         ligne.appendChild(attaqueCase);
@@ -69,7 +69,7 @@ function renderPokemonPage(pageNumber) {
         tableBody.appendChild(ligne);
     }
 
-    // Désactivation du bouton "Suivant" si nous sommes sur la dernière page
+    // Désactiver le bouton "Suivant" si nous sommes sur la dernière page
     const nextButton = document.getElementById('nextButton');
     if (end >= Pokemon.all_pokemons.length) {
         nextButton.disabled = true;
@@ -77,42 +77,37 @@ function renderPokemonPage(pageNumber) {
         nextButton.disabled = false;
     }
 
-    // Désactivation du bouton "Précédent" si nous sommes sur la première page
+    // Désactiver le bouton "Précédent" si nous sommes sur la première page
     const previousButton = document.getElementById('previousButton');
     previousButton.disabled = pageNumber === 1;
 
-    // Enregistrer la page actuelle
+    // Enregistrer la page actuelle dans le stockage local
     localStorage.setItem('currentPage', pageNumber);
 }
 
-// Fonction qui affiche le menu contextuel avec les informations d'un Pokémon
+// Fonction pour afficher le menu contextuel avec les informations du Pokémon
 function displayPokemonContextMenu(event, pokemon) {
-    event.preventDefault();
-    const popup = document.getElementById('pokemonPopup');
-    const popupId = document.getElementById('popupId');
-    const popupNom = document.getElementById('popupNom');
-    const popupGeneration = document.getElementById('popupGeneration');
-    const popupType = document.getElementById('popupType');
-    const popupEndurance = document.getElementById('popupEndurance');
-    const popupAttaque = document.getElementById('popupAttaque');
-    const popupDefense = document.getElementById('popupDefense');
-    const popupImage = document.getElementById('popupImage');
+    event.preventDefault(); // Empêcher le comportement par défaut du clic
+    const contextMenu = document.getElementById('pokemonContextMenu');
+    const contextMenuText = document.getElementById('contextMenuText');
 
-    popupId.textContent = "ID: " + pokemon.id;
-    popupNom.textContent = "Nom: " + pokemon.pokemon_name;
-    popupGeneration.textContent = "Génération: " + pokemon.generation;
-    popupType.textContent = "Type: " + pokemon.type;
-    popupEndurance.textContent = "Endurance: " + pokemon.base_stamina;
-    popupAttaque.textContent = "Attaque: " + pokemon.base_attack;
-    popupDefense.textContent = "Défense: " + pokemon.base_defense;
-    popupImage.src = "../webp/images/" + transformInt(pokemon.id) + ".webp";
+    // Réinitialiser le contenu du menu contextuel
+    contextMenuText.innerHTML = '';
 
-    if (!popup || !popupId || !popupNom || !popupGeneration || !popupType || !popupEndurance || !popupAttaque || !popupDefense || !popupImage) {
-        console.error("Erreur: Un ou plusieurs éléments de la popup ne sont pas définis.");
-        return;
+    // Parcourir les propriétés de l'objet pokemon et les ajouter au menu contextuel
+    for (const prop in pokemon) {
+        if (Object.hasOwnProperty.call(pokemon, prop) && (prop !== 'all_pokemons')) {
+            const propValue = pokemon[prop];
+            const menuItem = document.createElement('p');
+            menuItem.textContent = `${prop}: ${propValue}`;
+            contextMenuText.appendChild(menuItem);
+        }
     }
 
-    popup.style.display = 'block';
+    // Positionner le menu contextuel par rapport à la position du clic
+    contextMenu.style.left = `${event.pageX}px`;
+    contextMenu.style.top = `${event.pageY}px`;
+    contextMenu.style.display = 'block';
 }
 
 
@@ -122,7 +117,7 @@ function closePokemonContextMenu() {
     contextMenu.style.display = 'none';
 }
 
-// Fonction qui ferme le menu contextuel
+// Fonction pour fermer le menu contextuel
 function closePokemonContextMenu() {
     const contextMenu = document.getElementById('pokemonContextMenu');
     contextMenu.style.display = 'none';
@@ -142,6 +137,28 @@ nextButton.addEventListener('click', closePokemonContextMenu);
 const previousButton = document.getElementById('previousButton');
 previousButton.addEventListener('click', closePokemonContextMenu);
 
+// Fonction pour filtrer les Pokémon en fonction de la génération sélectionnée
+function filterPokemonByGeneration() {
+    const generationSelect = document.getElementById('generationSelect');
+    const selectedGeneration = generationSelect.value;
+    const tableRows = document.querySelectorAll('#tableBodyPokemon tr');
+
+    tableRows.forEach(row => {
+        const generationCell = row.querySelector('td:nth-child(2)');
+        const generation = generationCell.textContent.trim();
+        console.log(selectedGeneration);
+        if (selectedGeneration === 'all' || generation == selectedGeneration) {
+            row.style.display = ''; // Afficher la ligne si elle correspond à la génération sélectionnée ou si toutes les générations sont sélectionnées
+        } else {
+            row.style.display = 'none'; // Masquer la ligne si elle ne correspond pas à la génération sélectionnée
+        }
+    });
+}
+
+// Ajout d'un gestionnaire d'événements pour le changement de sélection dans le filtre de génération
+const generationSelect = document.getElementById('generationSelect');
+generationSelect.addEventListener('change', filterPokemonByGeneration);
+
 function nextPage() {
     currentPage++;
     renderPokemonPage(currentPage);
@@ -155,5 +172,5 @@ function previousPage() {
     renderPokemonPage(currentPage);
 }
 
-// Affiche la première page initialement
+// Afficher la première page initialement
 renderPokemonPage(currentPage);
