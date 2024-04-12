@@ -8,6 +8,8 @@
 
 body {
     font-family: Arial, sans-serif;
+    background-image: url('../Images/background_pokemon.jpg');
+    background-size: cover;
 }
 
 
@@ -38,10 +40,17 @@ button {
     color: #fff;
     border: none;
     cursor: pointer;
+    transition: var(--marine_blue_color) 0.3s;
 }
 
 button:hover {
     background-color: var(--marine_blue_color);
+}
+.btns {
+    display: flex;
+    justify-content: center;
+    margin-top: 3%;
+    gap: 2em;
 }
 
 table {
@@ -71,6 +80,11 @@ td {
 
 td {
     text-align: center;
+    transition: var(--marine_blue_color).3s;
+}
+
+tr:nth-child(even) td {
+    background-color: var(--sky_blue_color);
 }
 
 tbody>tr:nth-of-type(even) {
