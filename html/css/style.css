@@ -141,33 +141,69 @@ tbody>tr:nth-of-type(even) {
     z-index: 1000;
     border: 3px solid var(--sky_blue_color);
 
-  }
-  
-  /* Styles pour la croix de fermeture */
-  .popup span {
+}
+
+/* Styles pour la croix de fermeture */
+.popup span {
     cursor: pointer;
     position: absolute;
     top: 10px;
     right: 15px;
     font-size: 18px;
     font-weight: bold;
-  }
-  
-  /* Styles pour les titres dans la popup */
-  .popup h2 {
+}
+
+/* Styles pour les titres dans la popup */
+.popup h2 {
     margin-top: 0;
-  }
-  
-  /* Styles pour les images dans la popup */
-  .popup img {
+}
+
+/* Styles pour les images dans la popup */
+.popup img {
     display: block;
     margin: 0 auto;
     max-width: 100%;
     height: auto;
-  }
+}
 
-  @media screen and (max-width: 600px) { /* Ajustez la largeur d'écran maximale selon vos besoins */
+@media screen and (max-width: 600px) { /* Ajustez la largeur d'écran maximale selon vos besoins */
     #tablePokemon {
-      font-size: 14px;
+        font-size: 14px;
     }
-  }
+}
+
+
+
+/* Style pour les selects */
+select {
+    margin-bottom: 10px;
+    padding: 8px 12px;
+    border: 2px solid var(--sky_blue_color);
+    border-radius: 5px;
+    background-color: var(--white_color);
+    color: var(--black_color);
+    font-size: 16px;
+    cursor: pointer;
+    transition: border-color 0.3s, background-color 0.3s, color 0.3s;
+}
+
+select:hover,
+select:focus {
+    border-color: var(--marine_blue_color);
+}
+
+/* Style pour la zone de saisie */
+input[type="text"] {
+    padding: 8px 12px;
+    border: 2px solid var(--sky_blue_color);
+    border-radius: 5px;
+    background-color: var(--white_color);
+    color: var(--black_color);
+    font-size: 16px;
+    transition: border-color 0.3s, background-color 0.3s, color 0.3s;
+}
+
+input[type="text"]:hover,
+input[type="text"]:focus {
+    border-color: var(--marine_blue_color);
+}

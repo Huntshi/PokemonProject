@@ -26,8 +26,8 @@
 <body>
     <header>
         <figure>
-            <img src="../../Images/1664263789-dive-ball-by-ace-zeroartic-df45vwy-fullview.png" alt="Pokemon Logo" width="100"
-                height="100">
+            <img src="../webp/images/1664263789-dive-ball-by-ace-zeroartic-df45vwy-fullview.png" alt="Pokemon Logo"
+                width="100" height="100">
         </figure>
         <h1>Pokemon Battle</h1>
     </header>
@@ -76,39 +76,47 @@
         <label for="nameFilter">Nom :</label>
         <input type="text" id="nameFilter" oninput="filterPokemonByName()">
 
+        <div class="table_container">
+            <table id="tablePokemon">
+                <caption>
+                    Liste de Pokemon
+                </caption>
+                <thead>
+                    <tr>
+                        <th scope="col" onclick="sortPokemon('id')">ID</th>
+                        <th scope="col" onclick="sortPokemon('nom')">NOM</th>
+                        <th scope="col" onclick="sortPokemon('generation')">GENERATION</th>
+                        <th scope="col" onclick="sortPokemon('types')">TYPES</th>
+                        <th scope="col" onclick="sortPokemon('endurance')">ENDURANCE</th>
+                        <th scope="col" onclick="sortPokemon('attaque')">ATTAQUE</th>
+                        <th scope="col" onclick="sortPokemon('defense')">DEFENSE</th>
+                        <th id="contextImage" scope="col">IMAGE</th>
+                    </tr>
+                </thead>
 
-        <table id="tablePokemon">
-            <caption>
-                Liste de Pokemon
-            </caption>
-            <thead>
-                <tr>
-                    <div id="pokemonContextMenu" style="display: none; position: absolute; background-color: #fff; border: 1px solid #000; padding: 10px;">
-                        <span id="closeContextMenu" style="position: absolute; top: 5px; right: 5px; cursor: pointer;">×</span>
-                        <p id="contextMenuText"></p>
-                    </div>                    
-
-                    <th scope="col" onclick="sortPokemon('id')">id</th>
-                    <th scope="col" onclick="sortPokemon('nom')">nom</th>
-                    <th scope="col" onclick="sortPokemon('generation')">generation</th>
-                    <th scope="col" onclick="sortPokemon('types')">types</th>
-                    <th scope="col" onclick="sortPokemon('endurance')">endurance</th>
-                    <th scope="col" onclick="sortPokemon('attaque')">attaque</th>
-                    <th scope="col" onclick="sortPokemon('defense')">defense</th>
-                    <th scope="col">image</th>
-                </tr>
-            </thead>
-
-            <tbody id="tableBodyPokemon">
-            </tbody>
-        </table>
+                <tbody id="tableBodyPokemon">
+                </tbody>
+            </table>
+        </div>
 
         <!-- Boutons Suivant et Précédent -->
-        <div>
+        <div class="btns">
             <button id="previousButton" onclick="previousPage()">Précédent</button>
             <button id="nextButton" onclick="nextPage()">Suivant</button>
         </div>
     </main>
+
+    <div class="popup" id="pokemonPopup">
+        <span id="closeContextMenu" onclick="closePokemonContextMenu()">×</span>
+        <h2 id="popupId"></h2>
+        <h2 id="popupNom"></h2>
+        <p id="popupGeneration"></p>
+        <p id="popupType"></p>
+        <p id="popupEndurance"></p>
+        <p id="popupAttaque"></p>
+        <p id="popupDefense"></p>
+        <img id="popupImage" alt="">
+    </div>
 
     <script src="script_v5.js"></script>
 </body>
