@@ -20,39 +20,42 @@
     <script src="../data/pokemon.js"></script>
 
 
-    <link rel="stylesheet" href="../css/style.css"></link>
+    <link rel="stylesheet" href="../css/style.css">
+    </link>
 </head>
 
 <body>
     <header>
         <figure>
-            <img src="../../Images/1664263789-dive-ball-by-ace-zeroartic-df45vwy-fullview.png" alt="Pokemon Logo" width="100"
-                height="100">
+            <img src="../webp/images/1664263789-dive-ball-by-ace-zeroartic-df45vwy-fullview.png" alt="Pokemon Logo"
+                width="100" height="100">
         </figure>
         <h1>Pokemon Battle</h1>
     </header>
 
     <main>
-        <table id="tablePokemon">
-            <caption>
-                Liste de Pokemon
-            </caption>
-            <thead>
-                <tr>
-                    <th scope="col">id</th>
-                    <th scope="col">nom</th>
-                    <th scope="col">generation</th>
-                    <th scope="col">types</th>
-                    <th scope="col">endurance</th>
-                    <th scope="col">attaque</th>
-                    <th scope="col" >defense</th>
-                    <th id="contextImage" scope="col">image</th>
-                </tr>
-            </thead>
+        <div class="table_container">
+            <table id="tablePokemon">
+                <caption>
+                    Liste de Pokemon
+                </caption>
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">NOM</th>
+                        <th scope="col">GENERATION</th>
+                        <th scope="col">TYPES</th>
+                        <th scope="col">ENDURANCE</th>
+                        <th scope="col">ATTAQUE</th>
+                        <th scope="col">DEFENSE</th>
+                        <th id="contextImage" scope="col">IMAGE</th>
+                    </tr>
+                </thead>
 
-            <tbody id="tableBodyPokemon">
-            </tbody>
-        </table>
+                <tbody id="tableBodyPokemon">
+                </tbody>
+            </table>
+        </div>
 
         <div class="btns">
             <button id="previousButton" onclick="previousPage()">Précédent</button>
@@ -61,7 +64,7 @@
     </main>
 
     <div class="popup" id="pokemonPopup">
-        <span id="closeContextMenu">×</span>
+        <span id="closeContextMenu" onclick="closePokemonContextMenu()">×</span>
         <h2 id="popupId"></h2>
         <h2 id="popupNom"></h2>
         <p id="popupGeneration"></p>
@@ -74,4 +77,5 @@
 
     <script src="script_v3.js"></script>
 </body>
+
 </html>
