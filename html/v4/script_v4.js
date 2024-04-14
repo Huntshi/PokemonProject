@@ -173,40 +173,40 @@ function renderPokemonPage(pageNumber) {
 
 // Fonction qui affiche le menu contextuel avec les informations d'un Pokémon
 function displayPokemonContextMenu(event, pokemon) {
-  event.preventDefault();
-  const popup = document.getElementById('pokemonPopup');
-  const popupId = document.getElementById('popupId');
-  const popupNom = document.getElementById('popupNom');
-  const popupGeneration = document.getElementById('popupGeneration');
-  const popupType = document.getElementById('popupType');
-  const popupEndurance = document.getElementById('popupEndurance');
-  const popupAttaque = document.getElementById('popupAttaque');
-  const popupDefense = document.getElementById('popupDefense');
-  const popupImage = document.getElementById('popupImage');
+    event.preventDefault();
+    const popup = document.getElementById('pokemonPopup');
+    const popupId = document.getElementById('popupId');
+    const popupNom = document.getElementById('popupNom');
+    const popupGeneration = document.getElementById('popupGeneration');
+    const popupType = document.getElementById('popupType');
+    const popupEndurance = document.getElementById('popupEndurance');
+    const popupAttaque = document.getElementById('popupAttaque');
+    const popupDefense = document.getElementById('popupDefense');
+    const popupImage = document.getElementById('popupImage');
 
-  popupId.textContent = "ID: " + pokemon.id;
-  popupNom.textContent = "Nom: " + pokemon.pokemon_name;
-  popupGeneration.textContent = "Génération: " + pokemon.generation;
-  popupType.textContent = "Type: " + pokemon.type;
-  popupEndurance.textContent = "Endurance: " + pokemon.base_stamina;
-  popupAttaque.textContent = "Attaque: " + pokemon.base_attack;
-  popupDefense.textContent = "Défense: " + pokemon.base_defense;
-  popupImage.src = "../webp/images/" + transformInt(pokemon.id) + ".webp";
+    popupId.textContent = "ID: " + pokemon.id;
+    popupNom.textContent = "Nom: " + pokemon.pokemon_name;
+    popupGeneration.textContent = "Génération: " + pokemon.generation;
+    popupType.textContent = "Type: " + pokemon.type;
+    popupEndurance.textContent = "Endurance: " + pokemon.base_stamina;
+    popupAttaque.textContent = "Attaque: " + pokemon.base_attack;
+    popupDefense.textContent = "Défense: " + pokemon.base_defense;
+    popupImage.src = "../webp/images/" + transformInt(pokemon.id) + ".webp";
 
-  if (!popup || !popupId || !popupNom || !popupGeneration || !popupType || !popupEndurance || !popupAttaque || !popupDefense || !popupImage) {
-    console.error("Erreur: Un ou plusieurs éléments de la popup ne sont pas définis.");
-    return;
-  }
+    if (!popup || !popupId || !popupNom || !popupGeneration || !popupType || !popupEndurance || !popupAttaque || !popupDefense || !popupImage) {
+        console.error("Erreur: Un ou plusieurs éléments de la popup ne sont pas définis.");
+        return;
+    }
 
-  popup.style.display = 'block';
+    popup.style.display = 'block';
 }
 
 // Fonction pour fermer le menu contextuel
 function closePokemonContextMenu() {
-  const contextMenu = document.getElementById('pokemonPopup');
-  contextMenu.style.display = 'none';
-}
-
+    const contextMenu = document.getElementById('pokemonPopup');
+    contextMenu.style.display = 'none';
+  }
+  
 // Ajout d'un gestionnaire d'événements pour fermer le menu contextuel lorsque la croix est cliquée
 const closeContextMenuButton = document.getElementById('closeContextMenu');
 closeContextMenuButton.addEventListener('click', function(event) {
