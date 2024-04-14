@@ -58,8 +58,8 @@ function renderPokemonPage(pageNumber) {
     const imageCase = document.createElement('td');
 
     // Ajout d'un gestionnaire d'événements pour chaque ligne
-    ligne.addEventListener('click', function() {
-        displayPokemonContextMenu(event, pokemon);
+    ligne.addEventListener('click', function () {
+      displayPokemonContextMenu(event, pokemon);
     });
 
     idCase.textContent = pokemon.id;
@@ -74,26 +74,26 @@ function renderPokemonPage(pageNumber) {
     typesDiv.className = "pokemon-types";
 
     pokemon.type.forEach((type) => {
-        const typeTrimmed = type.trim();
-      
-        // Vérifiez si l'objet correspondant au type de Pokémon existe dans le tableau typeColorsAndIcons
-        if (typeColorsAndIcons.hasOwnProperty(typeTrimmed)) {
-          const typeIcon = document.createElement("img");
-          typeIcon.src = typeColorsAndIcons[typeTrimmed].icon;
-          typeIcon.width = 20;
-          typeIcon.height = 20;
-          typeIcon.alt = typeTrimmed + " Icon";
-      
-          const typeName = document.createElement("span");
-          typeName.textContent = typeTrimmed;
-          typeName.style.color = typeColorsAndIcons[typeTrimmed].color;
-      
-          typesDiv.appendChild(typeIcon);
-          typesDiv.appendChild(typeName);
-        } else {
-          console.error("Erreur: le type de Pokémon '" + typeTrimmed + "' n'est pas trouvé dans typeColorsAndIcons.");
-        }
-      });
+      const typeTrimmed = type.trim();
+
+      // Vérifiez si l'objet correspondant au type de Pokémon existe dans le tableau typeColorsAndIcons
+      if (typeColorsAndIcons.hasOwnProperty(typeTrimmed)) {
+        const typeIcon = document.createElement("img");
+        typeIcon.src = typeColorsAndIcons[typeTrimmed].icon;
+        typeIcon.width = 20;
+        typeIcon.height = 20;
+        typeIcon.alt = typeTrimmed + " Icon";
+
+        const typeName = document.createElement("span");
+        typeName.textContent = typeTrimmed;
+        typeName.style.color = typeColorsAndIcons[typeTrimmed].color;
+
+        typesDiv.appendChild(typeIcon);
+        typesDiv.appendChild(typeName);
+      } else {
+        console.error("Erreur: le type de Pokémon '" + typeTrimmed + "' n'est pas trouvé dans typeColorsAndIcons.");
+      }
+    });
 
     typesCase.appendChild(typesDiv);
 
@@ -169,6 +169,7 @@ function displayPokemonContextMenu(event, pokemon) {
   const popupEndurance = document.getElementById('popupEndurance');
   const popupAttaque = document.getElementById('popupAttaque');
   const popupDefense = document.getElementById('popupDefense');
+  const popupAttacks = document.getElementById('popupAttacks');
   const popupImage = document.getElementById('popupImage');
 
   popupId.textContent = "ID: " + pokemon.id;
@@ -178,6 +179,7 @@ function displayPokemonContextMenu(event, pokemon) {
   popupEndurance.textContent = "Endurance: " + pokemon.base_stamina;
   popupAttaque.textContent = "Attaque: " + pokemon.base_attack;
   popupDefense.textContent = "Défense: " + pokemon.base_defense;
+  popupAttacks.textContent = "Attaques: " + pokemon.getAttacks;
   popupImage.src = "../webp/images/" + transformInt(pokemon.id) + ".webp";
 
   if (!popup || !popupId || !popupNom || !popupGeneration || !popupType || !popupEndurance || !popupAttaque || !popupDefense || !popupImage) {
@@ -185,13 +187,6 @@ function displayPokemonContextMenu(event, pokemon) {
     return;
   }
 
-  if (pokemon.attack && pokemon.attack.length > 0) {
-    // Créez une chaîne de caractères contenant toutes les attaques séparées par des virgules
-    const attacksString = pokemon.attacks.join(', ');
-    popupAttacks.textContent = "Attaques: " + attacksString;
-  } else {
-    popupAttacks.textContent = "Attaques: Aucune attaque trouvée";
-  }
 
   popup.style.display = 'block';
 }
@@ -204,7 +199,7 @@ function closePokemonContextMenu() {
 
 // Ajout d'un gestionnaire d'événements pour fermer le menu contextuel lorsque la croix est cliquée
 const closeContextMenuButton = document.getElementById('closeContextMenu');
-closeContextMenuButton.addEventListener('click', function(event) {
+closeContextMenuButton.addEventListener('click', function (event) {
   event.stopPropagation(); // Empêcher la propagation du clic pour éviter la fermeture du menu contextuel
   closePokemonContextMenu();
 });

@@ -135,14 +135,34 @@ tbody>tr:nth-of-type(even) {
     display: none;
     background-color: #fff;
     padding: 20px;
-    border-radius: 5px;
+    border-radius: 8px;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
     max-width: 80%;
     z-index: 1000;
     border: 3px solid var(--sky_blue_color);
+    font-family: "Poppins_Regular";
 
   }
+
+  #popupImage {
+    width: 150px;
+    height: auto;
+    float: right;
+    margin-left: 20px;
+  }
+
+  .popupContent {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .popupRow {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
   
+
   /* Styles pour la croix de fermeture */
   .popup span {
     cursor: pointer;
@@ -151,6 +171,7 @@ tbody>tr:nth-of-type(even) {
     right: 15px;
     font-size: 18px;
     font-weight: bold;
+    margin-bottom: 10px;
   }
   
   /* Styles pour les titres dans la popup */
