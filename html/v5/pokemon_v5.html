@@ -26,7 +26,7 @@
 <body>
     <header>
         <figure>
-            <img src="../webp/images/1664263789-dive-ball-by-ace-zeroartic-df45vwy-fullview.png" alt="Pokemon Logo" width="100"
+            <img src="../../Images/1664263789-dive-ball-by-ace-zeroartic-df45vwy-fullview.png" alt="Pokemon Logo" width="100"
                 height="100">
         </figure>
         <h1>Pokemon Battle</h1>
@@ -51,7 +51,7 @@
         <div id="typeFilter">
             <label for="typeSelect">Filtrer par type:</label>
             <select id="typeSelect">
-                <option value="all">Toutes les types</option>
+                <option value="all">Tous les types</option>
                 <option value="Bug">Type Bug</option>
                 <option value="Dark">Type Dark</option>
                 <option value="Dragon">Type Dragon</option>
@@ -88,13 +88,13 @@
                         <p id="contextMenuText"></p>
                     </div>                    
 
-                    <th scope="col">id</th>
-                    <th scope="col">nom</th>
-                    <th scope="col">generation</th>
-                    <th scope="col">types</th>
-                    <th scope="col">endurance</th>
-                    <th scope="col">attaque</th>
-                    <th scope="col">defense</th>
+                    <th scope="col" onclick="sortPokemon('id')">id</th>
+                    <th scope="col" onclick="sortPokemon('nom')">nom</th>
+                    <th scope="col" onclick="sortPokemon('generation')">generation</th>
+                    <th scope="col" onclick="sortPokemon('types')">types</th>
+                    <th scope="col" onclick="sortPokemon('endurance')">endurance</th>
+                    <th scope="col" onclick="sortPokemon('attaque')">attaque</th>
+                    <th scope="col" onclick="sortPokemon('defense')">defense</th>
                     <th scope="col">image</th>
                 </tr>
             </thead>
@@ -110,6 +110,6 @@
         </div>
     </main>
 
-    <script src="script_v4.js"></script>
+    <script src="script_v5.js"></script>
 </body>
 </html>
