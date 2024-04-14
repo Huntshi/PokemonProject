@@ -182,8 +182,9 @@ function displayPokemonContextMenu(event, pokemon) {
     const popupEndurance = document.getElementById('popupEndurance');
     const popupAttaque = document.getElementById('popupAttaque');
     const popupDefense = document.getElementById('popupDefense');
+    const popupAttacks = document.getElementById('popupAttacks');
     const popupImage = document.getElementById('popupImage');
-
+  
     popupId.textContent = "ID: " + pokemon.id;
     popupNom.textContent = "Nom: " + pokemon.pokemon_name;
     popupGeneration.textContent = "Génération: " + pokemon.generation;
@@ -191,25 +192,27 @@ function displayPokemonContextMenu(event, pokemon) {
     popupEndurance.textContent = "Endurance: " + pokemon.base_stamina;
     popupAttaque.textContent = "Attaque: " + pokemon.base_attack;
     popupDefense.textContent = "Défense: " + pokemon.base_defense;
+    popupAttacks.textContent = "Attaques: " + pokemon.getAttacks;
     popupImage.src = "../webp/images/" + transformInt(pokemon.id) + ".webp";
-
+  
     if (!popup || !popupId || !popupNom || !popupGeneration || !popupType || !popupEndurance || !popupAttaque || !popupDefense || !popupImage) {
-        console.error("Erreur: Un ou plusieurs éléments de la popup ne sont pas définis.");
-        return;
+      console.error("Erreur: Un ou plusieurs éléments de la popup ne sont pas définis.");
+      return;
     }
-
+  
+  
     popup.style.display = 'block';
 }
-
+  
 // Fonction pour fermer le menu contextuel
 function closePokemonContextMenu() {
     const contextMenu = document.getElementById('pokemonPopup');
     contextMenu.style.display = 'none';
-  }
+}
   
 // Ajout d'un gestionnaire d'événements pour fermer le menu contextuel lorsque la croix est cliquée
 const closeContextMenuButton = document.getElementById('closeContextMenu');
-closeContextMenuButton.addEventListener('click', function(event) {
+closeContextMenuButton.addEventListener('click', function (event) {
     event.stopPropagation(); // Empêcher la propagation du clic pour éviter la fermeture du menu contextuel
     closePokemonContextMenu();
 });
