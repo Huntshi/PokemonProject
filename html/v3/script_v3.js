@@ -185,6 +185,14 @@ function displayPokemonContextMenu(event, pokemon) {
     return;
   }
 
+  if (pokemon.attack && pokemon.attack.length > 0) {
+    // Créez une chaîne de caractères contenant toutes les attaques séparées par des virgules
+    const attacksString = pokemon.attacks.join(', ');
+    popupAttacks.textContent = "Attaques: " + attacksString;
+  } else {
+    popupAttacks.textContent = "Attaques: Aucune attaque trouvée";
+  }
+
   popup.style.display = 'block';
 }
 
