@@ -39,9 +39,43 @@
                 <option value="all">Toutes les générations</option>
                 <option value="1">Génération 1</option>
                 <option value="2">Génération 2</option>
-                <!-- Ajoutez d'autres options pour les générations suivantes au besoin -->
+                <option value="3">Génération 3</option>
+                <option value="4">Génération 4</option>
+                <option value="5">Génération 5</option>
+                <option value="6">Génération 6</option>
+                <option value="7">Génération 7</option>
+                <option value="8">Génération 8</option>
             </select>
-        </div>        
+        </div>
+
+        <div id="typeFilter">
+            <label for="typeSelect">Filtrer par type:</label>
+            <select id="typeSelect">
+                <option value="all">Toutes les types</option>
+                <option value="Bug">Type Bug</option>
+                <option value="Dark">Type Dark</option>
+                <option value="Dragon">Type Dragon</option>
+                <option value="Electric">Type Electric</option>
+                <option value="Fairy">Type Fairy</option>
+                <option value="Fighting">Type Fighting</option>
+                <option value="Fire">Type Fire</option>
+                <option value="Flying">Type Flying</option>
+                <option value="Ghost">Type Ghost</option>
+                <option value="Grass">Type Grass</option>
+                <option value="Ground">Type Ground</option>
+                <option value="Ice">Type Ice</option>
+                <option value="Normal">Type Normal</option>
+                <option value="Poison">Type Poison</option>
+                <option value="Psychic">Type Psychic</option>
+                <option value="Rock">Type Rock</option>
+                <option value="Steel">Type Steel</option>
+                <option value="Water">Type Water</option>
+            </select>
+        </div>
+
+        <label for="nameFilter">Nom :</label>
+        <input type="text" id="nameFilter" oninput="filterPokemonByName()">
+
 
         <table id="tablePokemon">
             <caption>

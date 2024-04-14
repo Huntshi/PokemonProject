@@ -4,6 +4,15 @@ const pageSize = 25;
 // Récupérer la page actuelle depuis le stockage local
 let currentPage = localStorage.getItem('currentPage') || 1;
 
+// Récupérer l'état actuel du filtre de génération depuis le stockage local
+let currentFilter = localStorage.getItem('currentFilter') || 'all';
+
+// Récupérer l'état actuel du filtre de type depuis le stockage local
+let currentTypeFilter = localStorage.getItem('currentTypeFilter') || 'all';
+
+// Récupérer l'état actuel du filtre de nom depuis le stockage local
+let currentNameFilter = localStorage.getItem('currentNameFilter') || '';
+
 function transformInt(id) {
     let stringId = id.toString();
 
@@ -25,48 +34,52 @@ function renderPokemonPage(pageNumber) {
 
     for (let i = start; i < end && i < Pokemon.all_pokemons.length; i++) {
         const pokemon = Pokemon.all_pokemons[i];
-        const ligne = document.createElement('tr');
-        const idCase = document.createElement('td');
-        const nameCase = document.createElement('td');
-        const generationCase = document.createElement('td');
-        const typesCase = document.createElement('td');
-        const enduranceCase = document.createElement('td');
-        const attaqueCase = document.createElement('td');
-        const defenseCase = document.createElement('td');
-        const imageCase = document.createElement('td');
+        if ((currentFilter === 'all' || pokemon.generation == currentFilter) && 
+            (currentTypeFilter === 'all' || pokemon.type.includes(currentTypeFilter)) &&
+            (currentNameFilter === '' || pokemon.pokemon_name.toLowerCase().includes(currentNameFilter))) {
+            const ligne = document.createElement('tr');
+            const idCase = document.createElement('td');
+            const nameCase = document.createElement('td');
+            const generationCase = document.createElement('td');
+            const typesCase = document.createElement('td');
+            const enduranceCase = document.createElement('td');
+            const attaqueCase = document.createElement('td');
+            const defenseCase = document.createElement('td');
+            const imageCase = document.createElement('td');
 
-        // Ajoutez un gestionnaire d'événements pour chaque ligne
-        ligne.addEventListener('click', function() {
-            displayPokemonContextMenu(event, pokemon);
-        });
+            // Ajoutez un gestionnaire d'événements pour chaque ligne
+            ligne.addEventListener('click', function() {
+                displayPokemonContextMenu(event, pokemon);
+            });
 
-        idCase.textContent = pokemon.id;
-        nameCase.textContent = pokemon.pokemon_name;
-        generationCase.textContent = "Normal";
-        typesCase.textContent = pokemon.type;
-        enduranceCase.textContent = pokemon.base_stamina;
-        attaqueCase.textContent = pokemon.base_attack;
-        defenseCase.textContent = pokemon.base_defense;
+            idCase.textContent = pokemon.id;
+            nameCase.textContent = pokemon.pokemon_name;
+            generationCase.textContent = pokemon.generation;
+            typesCase.textContent = pokemon.type;
+            enduranceCase.textContent = pokemon.base_stamina;
+            attaqueCase.textContent = pokemon.base_attack;
+            defenseCase.textContent = pokemon.base_defense;
 
-        const image = document.createElement('img');
-        let imageId = transformInt(pokemon.id);
-        image.src = "../webp/images/" + imageId + ".webp";
-        image.height = "150";
-        image.width = "150";
-        image.alt = pokemon.pokemon_name;
+            const image = document.createElement('img');
+            let imageId = transformInt(pokemon.id);
+            image.src = "../webp/images/" + imageId + ".webp";
+            image.height = "150";
+            image.width = "150";
+            image.alt = pokemon.pokemon_name;
 
-        imageCase.appendChild(image);
+            imageCase.appendChild(image);
 
-        ligne.appendChild(idCase);
-        ligne.appendChild(generationCase);
-        ligne.appendChild(nameCase);
-        ligne.appendChild(typesCase);
-        ligne.appendChild(enduranceCase);
-        ligne.appendChild(attaqueCase);
-        ligne.appendChild(defenseCase);
-        ligne.appendChild(imageCase);
+            ligne.appendChild(idCase);
+            ligne.appendChild(nameCase);
+            ligne.appendChild(generationCase);
+            ligne.appendChild(typesCase);
+            ligne.appendChild(enduranceCase);
+            ligne.appendChild(attaqueCase);
+            ligne.appendChild(defenseCase);
+            ligne.appendChild(imageCase);
 
-        tableBody.appendChild(ligne);
+            tableBody.appendChild(ligne);
+        }
     }
 
     // Désactiver le bouton "Suivant" si nous sommes sur la dernière page
@@ -110,13 +123,6 @@ function displayPokemonContextMenu(event, pokemon) {
     contextMenu.style.display = 'block';
 }
 
-
-// Fonction pour fermer le menu contextuel
-function closePokemonContextMenu() {
-    const contextMenu = document.getElementById('pokemonContextMenu');
-    contextMenu.style.display = 'none';
-}
-
 // Fonction pour fermer le menu contextuel
 function closePokemonContextMenu() {
     const contextMenu = document.getElementById('pokemonContextMenu');
@@ -141,23 +147,45 @@ previousButton.addEventListener('click', closePokemonContextMenu);
 function filterPokemonByGeneration() {
     const generationSelect = document.getElementById('generationSelect');
     const selectedGeneration = generationSelect.value;
-    const tableRows = document.querySelectorAll('#tableBodyPokemon tr');
+    currentFilter = selectedGeneration;
+    localStorage.setItem('currentFilter', currentFilter);
 
-    tableRows.forEach(row => {
-        const generationCell = row.querySelector('td:nth-child(2)');
-        const generation = generationCell.textContent.trim();
-        console.log(selectedGeneration);
-        if (selectedGeneration === 'all' || generation == selectedGeneration) {
-            row.style.display = ''; // Afficher la ligne si elle correspond à la génération sélectionnée ou si toutes les générations sont sélectionnées
-        } else {
-            row.style.display = 'none'; // Masquer la ligne si elle ne correspond pas à la génération sélectionnée
-        }
-    });
+    // Rappel de la fonction de rendu pour mettre à jour l'affichage des Pokémon
+    renderPokemonPage(currentPage);
 }
 
 // Ajout d'un gestionnaire d'événements pour le changement de sélection dans le filtre de génération
 const generationSelect = document.getElementById('generationSelect');
 generationSelect.addEventListener('change', filterPokemonByGeneration);
+
+// Fonction pour filtrer les Pokémon en fonction du type sélectionné
+function filterPokemonByType() {
+    const typeSelect = document.getElementById('typeSelect');
+    const selectedType = typeSelect.value;
+    currentTypeFilter = selectedType;
+    localStorage.setItem('currentTypeFilter', currentTypeFilter);
+
+    // Rappel de la fonction de rendu pour mettre à jour l'affichage des Pokémon
+    renderPokemonPage(currentPage);
+}
+
+// Ajout d'un gestionnaire d'événements pour le changement de sélection dans le filtre de type
+const typeSelect = document.getElementById('typeSelect');
+typeSelect.addEventListener('change', filterPokemonByType);
+
+// Fonction pour filtrer les Pokémon en fonction du nom saisi
+function filterPokemonByName() {
+    const nameFilterInput = document.getElementById('nameFilter');
+    currentNameFilter = nameFilterInput.value.trim().toLowerCase();
+    localStorage.setItem('currentNameFilter', currentNameFilter);
+
+    // Rappel de la fonction de rendu pour mettre à jour l'affichage des Pokémon
+    renderPokemonPage(currentPage);
+}
+
+// Ajout d'un gestionnaire d'événements pour le changement dans le champ de filtre de nom
+const nameFilterInput = document.getElementById('nameFilter');
+nameFilterInput.addEventListener('input', filterPokemonByName);
 
 function nextPage() {
     currentPage++;
