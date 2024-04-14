@@ -172,8 +172,8 @@ function displayPokemonContextMenu(event, pokemon) {
   const popupAttacks = document.getElementById('popupAttacks');
   const popupImage = document.getElementById('popupImage');
 
-  popupId.textContent = "ID: " + pokemon.id;
-  popupNom.textContent = "Nom: " + pokemon.pokemon_name;
+  popupId.textContent = pokemon.id;
+  popupNom.textContent = pokemon.pokemon_name;
   popupGeneration.textContent = "Génération: " + pokemon.generation;
   popupType.textContent = "Type: " + pokemon.type;
   popupEndurance.textContent = "Endurance: " + pokemon.base_stamina;
